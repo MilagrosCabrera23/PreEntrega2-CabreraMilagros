@@ -7,7 +7,7 @@ class Prestamos {
             this.plazo = plazoMeses
     }
     simulacionPrestamos() {
-        //console.log(`El prestamo numero ${this.id} con el monto de ${this.monto} con una tasa de interes de ${this.tasaIntereses} con un plazo de ${this.plazo}`)
+        console.log(`El prestamo numero ${this.id} con el monto de ${this.monto} con una tasa de interes de ${this.tasaIntereses} con un plazo de ${this.plazo}`)
     }
 
 }
@@ -23,7 +23,7 @@ function validarInput(entrada) {
     }
 }
 
-
+//funcion que pide los datos,valida y luego lo muestra al resultado.
 function pedirDatos() {
     let ingresoNombre = prompt("Ingrese su nombre completo")
     while (/^[0-9]+$/.test(ingresoNombre)) {
@@ -52,46 +52,23 @@ function pedirDatos() {
 }
 pedirDatos()
 
+//verficica los datos de la funcion pedir datos
 function verificacionDatos(nombre, dni, telefono) {
     alert(`Sus datos son los siguientes:Su nombre es ${nombre}, su Dni: ${dni},su telefono:${telefono}.`)
 }
 //INSTANCIACION DE OBJETOS
 const opcion1 = new Prestamos(1, 30000, 5, 1)
-// opcion1.calcularCuotaMensual()
-
 const opcion2 = new Prestamos(2, 100000, 10, 5)
-// opcion2.calcularCuotaMensual()
-
 const opcion3 = new Prestamos(3, 300000, 18, 15)
-// opcion3.calcularCuotaMensual()
-
 const opcion4 = new Prestamos(4, 600000, 21, 20)
-// opcion4.calcularCuotaMensual()
-
-
 const opcion5 = new Prestamos(5, 400000, 35, 30)
-// opcion5.calcularCuotaMensual()
-
 const opcion6 = new Prestamos(6, 200000, 28, 25)
-// opcion6.calcularCuotaMensual()
-
 const opcion7 = new Prestamos(7, 800000, 40, 50)
-// opcion7.calcularCuotaMensual()
-
 const opcion8 = new Prestamos(8, 1700000, 62, 65)
-// opcion8.calcularCuotaMensual()
-
 const opcion9 = new Prestamos(9, 2600000, 76, 72)
-// opcion9.calcularCuotaMensual()
-
 const opcion10 = new Prestamos(10, 3500000, 85, 84)
-// opcion10.calcularCuotaMensual()
-
 const opcion11 = new Prestamos(11, 4200000, 90, 90)
-// opcion11.calcularCuotaMensual()
-
 const opcion12 = new Prestamos(12, 5000000, 100, 98)
-
 
 //ARRAY;
 const listaPrestamos = []
@@ -100,8 +77,7 @@ listaPrestamos.unshift(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6)
 listaPrestamos.push(opcion7, opcion8, opcion9, opcion10, opcion11, opcion12)
 
 
-//OPCION 1 DEL MENU SIMULA EL PRESTAMO CON LOS VALORES RECIBIDOS
-
+//OPCION 1 DEL MENU SIMULA EL PRESTAMO CON LOS VALORES RECIBIDOS Y VALIDA SUS ENTRADAS
 function simulacionPrestamos() {
     let montoPretendido = parseInt(prompt(`Ingrese el monto del préstamo en pesos:`));
 
@@ -142,7 +118,7 @@ function simulacionPrestamos() {
     console.log(`El prestamo numero ${PrestamoNuevo.id} con el monto de ${PrestamoNuevo.monto} con una tasa de interes de ${PrestamoNuevo.tasaIntereses} con un plazo de ${PrestamoNuevo.plazo}`)
 }
 
-//opcion 2:calcula cuota mensual y coseguro,luego muestra los resultados.
+//opcion 2:calcula cuota mensual,VALIDA LOS VALORES y luego muestra los resultados segun el interes .
 
 function calcularCuotaMensual() {
     let precioFinal = 0
@@ -152,7 +128,7 @@ function calcularCuotaMensual() {
         alert("La entrada no es válida,ingrese el monto del préstamo en pesos:.");
         montoIngresado = parseFloat(prompt("Ingrese el monto del préstamo en pesos: "))
     }
-   
+
     let cuotas = parseInt(prompt(`Ingrese la cantidad de cuotas que desea (plazo) para calcular el interes | SOLO DISPONIBLE: 6 12 18 24`))
     while (validarInput(cuotas)) {
         alert("La entrada no es válida,ingrese solo  el plazo en meses .");
@@ -202,9 +178,7 @@ function filtrarPrestamosInteres(array) {
     }
 }
 
-
-
-//opcion 5: cancela el prestamo otorgado = 
+//opcion 4: cancela el prestamo de las opciones disponibles  
 function cancelarPrestamo(array) {
     //mostrar lista de prestamos  para que vea la id en consola y pueda elegir}
     let eliminarID = parseInt(prompt("Ingrese el id que desea eliminar"))
@@ -220,7 +194,7 @@ function cancelarPrestamo(array) {
 }
 
 
-// for each para mostrar catalogo de prestamos disponibles
+// opcion 5: for each para mostrar catalogo de prestamos disponibles
 function verPrestamos(array) {
     array.forEach((prestamos) => console.log(`- El préstamo numero ${prestamos.id}: Monto de: ${prestamos.monto},con una tasa de Interés: ${prestamos.tasaIntereses}, en un plazo de : ${prestamos.plazo} cuotas`))
 }
