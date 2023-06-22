@@ -211,7 +211,7 @@ function menu() {
        3 -Busca prestamos por tasa de intereses.
        4 - Cancelar prestamo.
        5 - Ver opciones de prestamos disponibles.
-       6- Salir del Menú`));
+       6- Salir del Menú.`));
 
     switch (opcionesPrestamos) {
         case 1:
