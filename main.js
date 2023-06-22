@@ -203,6 +203,7 @@ function filtrarPrestamosInteres(array) {
 }
 
 
+
 //opcion 5: cancela el prestamo otorgado = 
 function cancelarPrestamo(array) {
     //mostrar lista de prestamos  para que vea la id en consola y pueda elegir}
