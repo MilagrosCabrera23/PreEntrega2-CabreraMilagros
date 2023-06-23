@@ -115,7 +115,6 @@ function simulacionPrestamos() {
     const PrestamoNuevo = new Prestamos(listaPrestamos.length + 1, montoPretendido, tasaIntereses, plazoMeses)
     listaPrestamos.push(PrestamoNuevo)
 
-    console.log(`El prestamo numero ${PrestamoNuevo.id} con el monto de ${PrestamoNuevo.monto} con una tasa de interes de ${PrestamoNuevo.tasaIntereses} con un plazo de ${PrestamoNuevo.plazo}`)
 }
 
 //opcion 2:calcula cuota mensual,VALIDA LOS VALORES y luego muestra los resultados segun el interes .
