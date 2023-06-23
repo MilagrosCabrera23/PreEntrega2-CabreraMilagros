@@ -164,22 +164,28 @@ function calcularCuotaMensual() {
 
 // opcion 3:elige un prestamo segun tasa de interes:
 function filtrarPrestamosInteres(array) {
+
     let interesIngresado = prompt(`Ingrese la tasa de interes del prestamo que necesita o quiere buscar`)
+    if (validarInput(interesIngresado <= 0)) {
+        alert("La tasa de interes debe ser superior a 0.")
+        tasaIntereses = parseInt(prompt("Ingrese la tasa de interes mayor a 0: "))
+    }
+
     let buscar = array.filter((prestamos) => prestamos.tasaIntereses <= interesIngresado)
+    
     if (buscar.length == 0) {
         alert(`No tenemos prestamos disponibles con esa tasa de interes`)
     } else {
+        copiaOrdenada = [].concat(listaPrestamos)
+        buscar.slice().sort(((a, b) => a.tasaIntereses - b.tasaIntereses))
         alert(`Si tenemos prestamos disponbiles menor o igual a esa tasa de interes`)
-        verPrestamos(buscar)
-    }
-    if (validarInput(interesIngresado > 0)) {
-        alert("La tasa de interes debe ser superior a 0.")
-        tasaIntereses = parseInt(prompt("Ingrese la tasa de interes mayor a 0: "))
+        verPrestamos(copiaOrdenada)
     }
 }
 
 //opcion 4: cancela el prestamo de las opciones disponibles  
 function cancelarPrestamo(array) {
+    verPrestamos(array)
     //mostrar lista de prestamos  para que vea la id en consola y pueda elegir}
     let eliminarID = parseInt(prompt("Ingrese el id que desea eliminar"))
 
@@ -187,12 +193,17 @@ function cancelarPrestamo(array) {
     console.log(arrayID)
 
     let indice = arrayID.indexOf(eliminarID)
-    console.log(indice)
 
-    array.splice(indice, 1)
-    prestamosDisponibles(array)
+    if (indice !== 0) {
+        array.splice(indice, 1)
+        console.log("Has eliminado el prestamo correctamente")
+    }
+
+    else {
+        alert("No se ha encontrado el ID para eliminar el prestamo.Ingrese nuevamente el ID")
+        eliminarID = parseInt(prompt("Ingrese el id que desea eliminar"))
+    }
 }
-
 
 // opcion 5: for each para mostrar catalogo de prestamos disponibles
 function verPrestamos(array) {
@@ -231,7 +242,7 @@ function menu() {
 
 
         case 5:
-            prestamosDisponibles()
+            verPrestamos(listaPrestamos)
             break
 
         case 6:
